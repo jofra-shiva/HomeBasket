@@ -30,8 +30,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return (
       <div className="brute-viewport flex items-center justify-center p-4">
         <div className="text-center">
-          <div className="w-16 h-16 bg-black border-3 border-black text-white flex items-center justify-center text-3xl mx-auto mb-4 shadow-[4px_4px_0_#606060]">
-            🧺
+          <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-black flex items-center justify-center mx-auto mb-4 shadow-[4px_4px_0_#606060]">
+            <img src="/logo.png" alt="HomeBasket Logo" className="w-full h-full object-cover" />
           </div>
           <div className="spinner mx-auto" />
           <p className="font-mono text-xs uppercase font-bold text-black mt-3">Loading HomeBasket...</p>
@@ -65,8 +65,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* ── TOP BRUTALIST HEADER ── */}
         <header className="brute-mobile-header">
           <div className="flex items-center gap-2.5">
-            <div className="brute-logo-box">
-              🧺
+            <div className="brute-logo-box p-0.5 overflow-hidden">
+              <img src="/logo.png" alt="HomeBasket" className="w-full h-full object-cover rounded-sm" />
             </div>
             <div>
               <div className="brute-app-name leading-none">HomeBasket</div>

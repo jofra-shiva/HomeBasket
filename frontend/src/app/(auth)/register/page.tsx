@@ -69,7 +69,9 @@ export default function RegisterPage() {
 
       {/* Brand */}
       <div className="lc-brand">
-        <div className="lc-logo">🧺</div>
+        <div className="lc-logo">
+          <img src="/logo.png" alt="HomeBasket" className="w-full h-full object-cover" />
+        </div>
         <div>
           <h1 className="lc-name">HomeBasket</h1>
           <p className="lc-tagline">Expense Tracker</p>
