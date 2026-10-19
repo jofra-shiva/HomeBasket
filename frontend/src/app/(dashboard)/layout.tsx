@@ -20,6 +20,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const { user, loading, logout } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
+  const path = pathname || "";
   const [profileDrawerOpen, setProfileDrawerOpen] = useState(false);
 
   useEffect(() => {
@@ -49,11 +50,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   };
 
   const getPageTitle = () => {
-    if (pathname.startsWith("/products")) return "PRODUCTS CATALOGUE";
-    if (pathname.startsWith("/shopping")) return "SHOPPING LISTS";
-    if (pathname.startsWith("/history")) return "PURCHASE HISTORY";
-    if (pathname.startsWith("/expenses")) return "EXPENSE ANALYTICS";
-    if (pathname.startsWith("/settings")) return "ACCOUNT & PROFILE";
+    if (path.startsWith("/products")) return "PRODUCTS CATALOGUE";
+    if (path.startsWith("/shopping")) return "SHOPPING LISTS";
+    if (path.startsWith("/history")) return "PURCHASE HISTORY";
+    if (path.startsWith("/expenses")) return "EXPENSE ANALYTICS";
+    if (path.startsWith("/settings")) return "ACCOUNT & PROFILE";
     return "OVERVIEW DASHBOARD";
   };
 
@@ -106,7 +107,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <nav className="brute-bottom-nav">
           <div className="brute-bottom-bar">
             {mobileNavItems.map(({ href, icon: Icon, label }) => {
-              const isActive = pathname === href || pathname.startsWith(href + "/");
+              const isActive = path === href || path.startsWith(href + "/");
               return (
                 <Link
                   key={href}

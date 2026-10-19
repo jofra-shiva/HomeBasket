@@ -1,13 +1,17 @@
 /** @type {import("next").NextConfig} */
 const nextConfig = {
+  // Next.js handles all /api routes internally via src/pages/api/[[...all]].js
+  // without needing a separate backend server!
   async rewrites() {
-    const backendUrl = process.env.BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-    return [
-      {
-        source: "/api/:path*",
-        destination: `${backendUrl}/api/:path*`,
-      },
-    ];
+    if (process.env.EXTERNAL_BACKEND_URL) {
+      return [
+        {
+          source: "/api/:path*",
+          destination: `${process.env.EXTERNAL_BACKEND_URL}/api/:path*`,
+        },
+      ];
+    }
+    return [];
   },
 };
 

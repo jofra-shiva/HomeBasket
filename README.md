@@ -281,38 +281,27 @@ All monetary values are stored as **integer paise** (1 INR = 100 paise) to avoid
 
 ---
 
-## ☁️ Deployment Guide (GitHub & Vercel)
+## ☁️ Deployment Guide (GitHub & Vercel) – Single Unified Fullstack Project
 
-This repository is structured as a full-stack monorepo (`frontend/` + `backend/`).
+HomeBasket is completely unified into a single full-stack Next.js application. Running `npm run dev` inside `frontend` runs BOTH the UI and the Backend API on the same port (`3000`). You do **not** need to run a separate backend server!
 
 ### 1. Push to GitHub
 ```bash
-git remote add origin https://github.com/<your-username>/HomeBasket.git
-git branch -M main
+git add .
+git commit -m "feat: unified fullstack HomeBasket for single Vercel deployment"
 git push -u origin main
 ```
 
-### 2. Deploy Backend to Vercel
-1. Log in to [Vercel](https://vercel.com) -> Click **Add New** -> **Project**.
-2. Import your `HomeBasket` repository.
-3. In **Root Directory**, click **Edit** and choose `backend`.
-4. Framework Preset: **Other** (handled automatically via `vercel.json`).
+### 2. Deploy to Vercel (Single Project)
+1. Go to [Vercel Dashboard](https://vercel.com/dashboard) ➔ Click **Add New...** ➔ **Project**.
+2. Select and **Import** your `HomeBasket` repository.
+3. In **Root Directory**, click **Edit** and choose `frontend`.
+4. Framework Preset will automatically detect **Next.js**.
 5. Under **Environment Variables**, add:
-   - `MONGODB_URI`: Your MongoDB Atlas connection string.
-   - `JWT_SECRET`: A long secure secret key.
+   - `MONGODB_URI`: `mongodb+srv://sivaprakashm5235mca25_db_user:IlGq868TsdO741HC@homebascut.jzh1eir.mongodb.net/`
+   - `JWT_SECRET`: `homebasket_super_secret_jwt_key_change_this_before_production_2024`
    - `NODE_ENV`: `production`
-   - `FRONTEND_URL`: `https://<your-frontend-project-name>.vercel.app` (or leave empty initially).
-   - `COOKIE_SECURE`: `true`
-6. Click **Deploy**. Note down your backend URL (e.g., `https://homebasket-backend.vercel.app`).
-
-### 3. Deploy Frontend to Vercel (Direct User Entrypoint)
-1. On Vercel, click **Add New** -> **Project**.
-2. Select the same `HomeBasket` repository.
-3. In **Root Directory**, click **Edit** and select `frontend`.
-4. Framework Preset: **Next.js** (detected automatically).
-5. Under **Environment Variables**, add:
-   - `BACKEND_URL`: Your deployed backend URL (e.g. `https://homebasket-backend.vercel.app`)
-   - `NEXT_PUBLIC_API_URL`: Your deployed backend URL (e.g. `https://homebasket-backend.vercel.app`)
 6. Click **Deploy**.
 
-> **Result**: Visiting your frontend Vercel URL directly loads the full **HomeBasket** application. Next.js server rewrites transparently forward `/api/*` to the backend without CORS or cookie blockage!
+> **Done!** Opening your Vercel URL directly loads HomeBasket with full authentication, products catalog, shopping checklists, and expense tracking working out of the box!
+
