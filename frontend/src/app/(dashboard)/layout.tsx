@@ -93,9 +93,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </header>
 
         {/* ── PAGE STRIPE (Space Mono indicator) ── */}
-        <div className="brute-page-stripe flex items-center justify-between">
+        <div className="brute-page-stripe">
           <span>▸ {getPageTitle()}</span>
-          <span className="text-[9px] text-emerald-400 font-mono">● LIVE</span>
         </div>
 
         {/* ── MAIN CONTENT ── */}
